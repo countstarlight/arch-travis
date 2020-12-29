@@ -74,4 +74,4 @@ eval docker run --rm \
     -e CONFIG_REPOS="$CONFIG_REPOS" \
     --privileged \
     "${envs[@]}" \
-    mikkeloscar/arch-travis:latest
+    countstarlight/arch-travis:latest

@@ -1,8 +1,8 @@
 # Build Archlinux packages with drone
 #
-#     docker build --rm=true -t mikkeloscar/arch-travis .
+#     docker build --rm=true -t countstarlight/arch-travis .
 
-FROM archlinux/base:latest
+FROM archlinux/archlinux:latest
 MAINTAINER Codist <countstarlight@gmail.com>
 
 # copy sudoers file
