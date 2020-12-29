@@ -1,4 +1,17 @@
-# arch-travis [![Travis BuildStatus](https://travis-ci.com/countstarlight/arch-travis.svg?branch=master)](https://travis-ci.com/github/countstarlight/arch-travis)
+arch-travis
+=====
+
+<p align="center">
+  <a href="https://travis-ci.com/github/countstarlight/arch-travis">
+    <img src="https://travis-ci.com/countstarlight/arch-travis.svg?branch=master" alt="Build Status">
+  </a>
+  <a href="https://hub.docker.com/r/countstarlight/arch-travis">
+    <img src="https://img.shields.io/docker/pulls/countstarlight/arch-travis.svg" alt="Docker Pulls">
+  </a>
+  <a href="https://github.com/countstarlight/arch-travis/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/countstarlight/arch-travis" alt="GNU License">
+  </a>
+</p>
 
 [English](README.md) | 简体中文
 
