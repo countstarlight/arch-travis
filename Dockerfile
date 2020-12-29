@@ -14,11 +14,13 @@ RUN cat /etc/pacman.d/mirrorlist
 
 RUN \
     # Update
+    pacman-key --init && \
+    pacman-key --populate archlinux && \
     pacman -Syu \
         base-devel \
         git \
         reflector \
-        --noconfirm && \
+        --noconfirm --need && \
     # Clean .pacnew files
     find / -name "*.pacnew" -exec rename .pacnew '' '{}' \;
 
@@ -47,6 +49,8 @@ RUN \
     tar xf yay-bin.tar.gz && \
     cd yay-bin && makepkg -is --skippgpcheck --noconfirm && cd .. && \
     rm -rf yay-bin && rm yay-bin.tar.gz
+
+COPY contrib/etc/pacman.conf /etc/pacman.conf
 
 # Add arch-travis script
 COPY init.sh /usr/bin/arch-travis
