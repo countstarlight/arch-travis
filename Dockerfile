@@ -3,7 +3,7 @@
 #     docker build --rm=true -t mikkeloscar/arch-travis .
 
 FROM archlinux/base:latest
-MAINTAINER Mikkel Oscar Lyderik Larsen <m@moscar.net>
+MAINTAINER Codist <countstarlight@gmail.com>
 
 # copy sudoers file
 COPY contrib/etc/sudoers.d/$UGNAME /etc/sudoers.d/$UGNAME

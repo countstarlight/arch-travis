@@ -1,12 +1,10 @@
 # arch-travis [![Travis BuildStatus](https://travis-ci.com/countstarlight/arch-travis.svg?branch=master)](https://travis-ci.com/github/countstarlight/arch-travis)
 
-English | [简体中文](README_CN.md)
+[English](README.md) | 简体中文
 
-arch-travis provides a docker based Arch Linux build environment for
-[Travis-CI][travis-ci] builds. It supports a very simple (and limited)
-configuration based on `.travis.yml`.
+arch-travis 为 [Travis-CI][travis-ci] 提供一个基于 docker 的 Arch Linux 构建环境，它支持基于 `.travis.yml` 的简洁(也有限)的配置方式
 
-Example:
+示例：
 ```yaml
 os: linux
 
@@ -35,15 +33,14 @@ script:
 - "curl -s https://raw.githubusercontent.com/countstarlight/arch-travis/master/arch-travis.sh | bash"
 ```
 
-`arch.repos` defines a list of custom repositories.
+`arch.repos` 自定义软件源仓库的列表
 
-`arch.packages` defines a list of packages (from official repos or AUR) to be
-installed before running the build.
+`arch.packages` 构建前需要安装的软件包(从官方源或AUR)列表
 
-`arch.mount` defines a list of shared folders (docker volumes) from travis host to build container.
-Format: `host_src:container_dst` (relative path and environment variables are supported)
+`arch.mount` 从travis host到构建容器的共享文件夹 (docker volumes) 列表
+格式: `host_src:container_dst` (相对路径或支持的环境变量)
 
-`arch.before_install` defines a list of scripts to run after system boots.
+`arch.before_install` 系统启动后运行的脚本列表
 It's purpose is to alter build environment before system update and packages
 installation. Anything defined in the `arch.before_install` list will run from
 the base of the repository as a normal user called `travis`, `sudo` is available.
@@ -56,7 +53,7 @@ installed in the setup.
 `script` defines the scripts to be run by travis, this is where arch-travis is
 initialized.
 
-### Default packages and repositories
+### 默认软件包和软件仓库
 
 By default the following packages are installed and usable from within the
 build environment.

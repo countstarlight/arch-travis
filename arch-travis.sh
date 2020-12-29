@@ -47,7 +47,7 @@ configure_volumes() (
     if travis_yml arch script >/dev/null 2>&1; then
       echo '*** WARNING! Your current arch-travis configuration is outdated'
       echo '*** Update ".travis.yml": replacing "arch:" keyword with "archlinux:"'
-      echo '*** More info: https://github.com/mikkeloscar/arch-travis/issues/65'
+      echo '*** More info: https://github.com/countstarlight/arch-travis/issues/65'
       exit 66
     fi
 } >&2
