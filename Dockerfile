@@ -24,6 +24,7 @@ RUN \
         base-devel \
         git \
         reflector \
+        rsync \
         --noconfirm --need && \
     # Clean .pacnew files
     find / -name "*.pacnew" -exec rename .pacnew '' '{}' \;
