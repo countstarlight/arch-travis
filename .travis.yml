@@ -1,4 +1,6 @@
+arch: amd64
 os: linux
+dist: focal
 
 language: c
 
@@ -32,6 +34,14 @@ archlinux:
     for ((i=0;i<10;i++)) ; do
       echo test$i
     done
+
+before_install:
+  - sudo apt-get update && sudo apt-get -y dist-upgrade
+  - eval "$(GIMME_GO_VERSION=1.16 gimme)"
+  - go version
+  - sudo apt-get install --assume-yes libseccomp-dev
+  - git clone https://github.com/opencontainers/runc
+  - cd runc && git checkout v1.0.0-rc93 && make -j`nproc` && sudo make install && cd .. && rm -rf runc
 
 script:
 # build new image

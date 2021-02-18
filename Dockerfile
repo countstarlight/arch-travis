@@ -2,15 +2,19 @@
 #
 #     docker build --rm=true -t countstarlight/arch-travis .
 
-FROM archlinux/archlinux:latest
+FROM archlinux/archlinux:base-devel
 MAINTAINER Codist <countstarlight@gmail.com>
 
-# copy sudoers file
-COPY contrib/etc/sudoers.d/$UGNAME /etc/sudoers.d/$UGNAME
-# Add pacman.conf template
-COPY contrib/etc/pacman.conf /etc/pacman.conf
+ENV UGID='2000' UGNAME='travis'
+
+# Add sudoers
+RUN echo "travis ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$UGNAME
+# Enable multilib repo
+RUN sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 RUN cat /etc/pacman.d/mirrorlist
+
+RUN chmod 'u=r,g=r,o=' /etc/sudoers.d/$UGNAME
 
 RUN \
     # Update
@@ -24,12 +28,7 @@ RUN \
     # Clean .pacnew files
     find / -name "*.pacnew" -exec rename .pacnew '' '{}' \;
 
-RUN \
-    chmod 'u=r,g=r,o=' /etc/sudoers.d/$UGNAME && \
-    chmod 'u=rw,g=r,o=r' /etc/pacman.conf
-
 # Setup build user/group
-ENV UGID='2000' UGNAME='travis'
 RUN \
     groupadd --gid "$UGID" "$UGNAME" && \
     useradd --create-home --uid "$UGID" --gid "$UGID" --shell /usr/bin/false "${UGNAME}"
