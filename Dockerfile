@@ -9,8 +9,6 @@ ENV UGID='2000' UGNAME='travis'
 
 # Add sudoers
 RUN echo "travis ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$UGNAME
-# Enable multilib repo
-RUN sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 RUN cat /etc/pacman.d/mirrorlist
 
@@ -49,6 +47,9 @@ RUN \
     tar xf yay-bin.tar.gz && \
     cd yay-bin && makepkg -is --skippgpcheck --noconfirm && cd .. && \
     rm -rf yay-bin && rm yay-bin.tar.gz
+
+# Enable multilib repo
+RUN sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 # Add arch-travis script
 COPY init.sh /usr/bin/arch-travis
